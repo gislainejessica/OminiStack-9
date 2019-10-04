@@ -12,11 +12,13 @@ const routes = express.Router()
 const upload =  multer(uploadConfig)
 
 routes.post('/sessions', SessionController.store)
-
+// Administrador faz upload das imagens
 routes.post('/spots', upload.single('imagem'), SpotController.store)
+
 routes.get('/spots', SpotController.index)
 
 routes.post('/spots/:spot_id/reserva', ReservaController.store)
+
 routes.get('/dashboard', DashboardController.show)
 
 module.exports = routes

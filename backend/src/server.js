@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const routes = require('./routes')
+const cors = require('cors')
 
 const app = express()
 
@@ -8,6 +9,7 @@ mongoose.connect('mongodb+srv://oministack:oministack@ominstack9-ugfir.mongodb.n
                 { useNewUrlParser: true , useUnifiedTopology: true })
 
 app.use(express.json())
+app.use(cors())
 app.use(routes)
 app.listen(3333)
 

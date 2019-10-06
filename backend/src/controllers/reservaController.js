@@ -13,6 +13,11 @@ module.exports = {
         })
 
         await reserva.populate('usuario').populate('spot').execPopulate()
+        const donoSockect = req.connected_users[reserva.spot.usuario]
+        
+        if (donoSockect){
+            req.io.to(donoSockect).emit('reserva_requisitada', reserva)
+        }
         return res.json(reserva)
     }
 }

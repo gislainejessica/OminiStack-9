@@ -9,3 +9,5 @@
 Hack responsivo
   max-width: 450px;
   width: 100%;
+
+- Socket.io-cliente : possibilita a conexão instantânea do frontend com o servidor, implementação do frontend

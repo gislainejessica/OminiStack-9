@@ -25,3 +25,25 @@ ul.spot-lista li span{
     font-size: 15px;
     color: #999;
 }
+ul.requisicao{
+    list-style: none;
+    margin-bottom: 15px;
+}
+ul.requisicao li{
+    font-size: 16px;
+    line-height: bold;
+}
+ul.requisicao li button{
+    margin-right: 10px;
+    border: 0;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+ul.requisicao li button.aceito{
+    color: #84c870
+}
+
+ul.requisicao li button.rejeito{
+    color: #e55e5e
+}

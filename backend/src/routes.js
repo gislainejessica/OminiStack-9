@@ -7,6 +7,10 @@ const SessionController = require('./controllers/sessionController')
 const SpotController = require('./controllers/spotController')
 const DashboardController = require('./controllers/dashboardController')
 const ReservaController = require('./controllers/reservaController')
+const DesaprovamentoController = require('./controllers/desaprovamentoController')
+const AprovamentoController = require('./controllers/aprovamentoController')
+
+
 
 const routes = express.Router()
 const upload =  multer(uploadConfig)
@@ -21,5 +25,10 @@ routes.get('/spots', SpotController.index)
 routes.post('/spots/:spot_id/reserva', ReservaController.store)
 
 routes.get('/dashboard', DashboardController.show)
+// Aprovar requisições
+routes.post('/reservas/:resersa_id/aprovamento', AprovamentoController.store)
+// Desaprovar requisições
+routes.post('/reservas/:resersa_id/desaprovamento', DesaprovamentoController.store)
+
 
 module.exports = routes

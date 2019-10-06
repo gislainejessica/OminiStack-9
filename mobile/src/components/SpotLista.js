@@ -1,22 +1,20 @@
-import React , {useState,useEffect} from 'react'
-import {withNavigation} from 'react-navigation'
-import {Image,  View, StyleSheet, Text, FlatList, TouchableOpacity} from 'react-native'
+import React , { useState, useEffect } from 'react'
+import { withNavigation } from 'react-navigation'
+import { Image,  View, StyleSheet, Text, FlatList, TouchableOpacity } from 'react-native'
 import api from '../services/api'
 
 // import { Container } from './styles';
 // setSpots(espaco)
-function SpotLista({tech, navigation}) {
-    const [spots, setSpots] = useState(['React', 'React Native', 'NodeJs'])
-    useEffect(()=> {
-      async function loadSpots(){
-          const resposta = await api.get('/spots',{
-            params: {tech}
-          })
-          const espaco = resposta.data
-          
-          console.log(espaco)
-      }
-      loadSpots()
+function SpotLista({ tecnologia, navigation }) {
+    const [spots, setSpots] = useState([])
+
+	useEffect(()=> {
+		async function loadSpots(){
+			const resposta = await api.get('/spots',{ params: { tecnologia } })
+			console.log(resposta.data)
+			setSpots(resposta.data)          
+		}
+		loadSpots()
     }, [])
 	
 	function handleNAvigate(id){
@@ -25,7 +23,7 @@ function SpotLista({tech, navigation}) {
 
     return (
       <View style={styles.constainer}> 
-        <Text style={styles.title}>Empresas que usam => <Text style={styles.bold}>{tech}</Text></Text>
+        <Text style={styles.title}>Empresas que usam => <Text style={styles.bold}>{tecnologia}</Text></Text>
         <FlatList 
           style={styles.list}
           data={spots}

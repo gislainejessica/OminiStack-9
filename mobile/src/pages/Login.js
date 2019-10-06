@@ -12,17 +12,20 @@ import {
 import logo from '../assets/logo.png'
 import api from '../services/api'
 // import { Container } from './styles'; // enabled={Platform.OS === "ios"} 
-
-export default function Login({navigation}) {
-    const [email, setEmail] = useState('')
-    const [techs, setTechs] = useState('')
-
+/** 
     useEffect(()=> {
         AsyncStorage.getItem('usuario').then(usuario => {
             if (usuario)
                 navigation.navigate('Listagem')
         })
     }, [])
+ */
+
+
+export default function Login({navigation}) {
+    const [email, setEmail] = useState('')
+    const [techs, setTechs] = useState('')
+
 
     async function handleSubmit(){
         const resposta = await api.post('/sessions',{ email })

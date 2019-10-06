@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
-import { SafeAreaView, AsyncStorage,Text, StyleSheet, TouchableOpacity, TextInput, Alert} from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, AsyncStorage,Text, StyleSheet, TouchableOpacity, TextInput, Alert } from 'react-native';
 import api from '../services/api'
 // import { Container } from './styles';
 
-export default function Reserva({navigation}) {
+export default function Reserva({ navigation }) {
 	const id = navigation.getParam('id') 
 	const [data, setData] = useState('')
 
 	async function handleSubmit(){
-		const user_id = await AsyncStorage.getItem('user')
-		await api.post(`/spots/${id}/reserva`, {data},{headers: {user_id}})
+		const usuario_id = await AsyncStorage.getItem('user')
+		await api.post(`/spots/${id}/reserva`, { data },{ headers: { usuario_id } })
 		Alert.alert('Solicitação de reserva enviada')
 		navigation.navigate('Listagem')
 	}
